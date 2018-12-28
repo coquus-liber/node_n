@@ -3,5 +3,5 @@
 
 package 'npm'
 execute "npm install -g n"
-execute "n 8.14.0"
+execute "n #{node[:node_n][:node][:version]}"
 
