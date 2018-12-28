@@ -2,6 +2,6 @@
 # Recipe:: default
 
 package 'npm'
-user_execute "npm install -g n"
-user_execute "n 8.14.0"
+execute "npm install -g n"
+execute "n 8.14.0"
 

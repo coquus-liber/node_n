@@ -2,7 +2,7 @@
 resource_name :user_execute
 
 property :command, String, name_property: true
-property :user, String, default: lazy{ |r| r.name || ::Etc.getpwuid(1000).name }
+property :user, String, default: lazy{ |r| ::Etc.getpwuid(1000).name }
 property :usr, Etc::Passwd, default: lazy{ |r| ::Etc.getpwnam(r.user) }
 property :grp, Etc::Group, default: lazy{ |r| ::Etc.getgrgid(r.usr.gid) }
 property :group, String, default: lazy {|r| r.grp.name }
@@ -25,7 +25,6 @@ action :execute do
     group new_resource.group
     environment new_resource.environment
     command new_resource.command
-    creates new_resource.installed_file
     live_stream true
   end
 end
